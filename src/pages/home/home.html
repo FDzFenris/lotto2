@@ -1,0 +1,85 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title text-center>
+
+      {{this.todo.showhead}}
+
+     
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding  (ionScroll)="onScroll($event)" >
+  <br>
+  
+  <h2>Welcome to FDzFenris </h2>
+
+  <ion-item>
+
+    <ion-input placeholder="ตรวจสลากกินแบ่งรัฐบาล " name="input1" id="input1" type="tel" maxlength="6" [(ngModel)]="todo.search">
+    </ion-input>
+
+  </ion-item>
+  <button ion-button block color="dark" (click)="check(todo.search)">เช็คหวย </button>
+
+  <ion-fab bottom right>
+      <button (click)="go_top()" ion-fab mini  color="primary">
+      <ion-icon name="arrow-dropup-circle"  ></ion-icon>
+      </button>
+  </ion-fab>
+ 
+  
+  <ion-navbar color='primary'  >
+    <ion-list *ngFor="let item2 of result_html; ">
+
+      <ion-item>
+              <ion-grid>
+                <ion-row>
+                  <ion-col text-center col-12 class='herder_lotto'>
+                    <h2>
+                      <b>{{item2.name_reward}}</b>
+                    </h2>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+                
+            
+                <ion-grid>
+                  <ion-row >
+                    <ion-item class='body_lotto'>
+                      <ion-row >
+                        <ion-col   class="center"  col-auto *ngFor="let item3 of item2.result; let i = index" >
+                          
+                          {{ item3 }}
+
+                        </ion-col>
+                      </ion-row>
+                    </ion-item>
+                  </ion-row>
+                </ion-grid>
+
+
+
+                <ion-grid>
+                  <ion-row>
+                    <ion-col text-center col-12 class='footer_lotto'>
+                      <h6> {{item2.reward}} </h6>
+                    </ion-col>
+
+                  </ion-row>
+                </ion-grid>
+
+      </ion-item>
+
+
+    </ion-list>
+  </ion-navbar >
+</ion-content  >
+
+<!-- 
+<ion-footer>
+  <ion-toolbar>
+    <ion-title>Credit สำนักงานสลากกินแบ่งรัฐบาล(http://www.glo.or.th)</ion-title>
+
+  </ion-toolbar>
+</ion-footer> -->

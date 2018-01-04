@@ -1,0 +1,61 @@
+page-home {
+
+    .message {
+        border: 1px solid #ccc;
+        padding: 10px;
+        color: #333;
+      }
+      
+      .success {
+        @extend .message;
+        border-color: green;
+      }
+      
+      .error {
+        @extend .message;
+        border-color: red;
+      }
+      
+      .warning {
+        @extend .message;
+        border-color: yellow;
+      }
+
+      .herder_lotto{
+        border: none;
+        padding: 10px;
+        color : rgb(4, 56, 124);
+
+      }
+
+      .body_lotto{
+        border: none;
+       
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f0f9ff+0,cbebff+47,a1dbff+100;Blue+3D+%2313 */
+background: rgb(240,249,255); /* Old browsers */
+background: -moz-linear-gradient(top, rgba(240,249,255,1) 0%, rgba(203,235,255,1) 47%, rgba(161,219,255,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, rgba(240,249,255,1) 0%,rgba(203,235,255,1) 47%,rgba(161,219,255,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, rgba(240,249,255,1) 0%,rgba(203,235,255,1) 47%,rgba(161,219,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0f9ff', endColorstr='#a1dbff',GradientType=0 ); /* IE6-9 */
+        color : rgb(14, 14, 14);
+      
+      }
+
+      .footer_lotto{
+        border: none;
+        padding: 10px;
+        color : rgb(36, 36, 36);
+      
+      }
+
+      .center {
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        text-align: center;
+    }
+
+
+  
+      
+}
