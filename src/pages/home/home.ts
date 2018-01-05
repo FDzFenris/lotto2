@@ -4,7 +4,7 @@ import { ToastController } from 'ionic-angular/components/toast/toast-controller
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Http, Headers, RequestOptions } from "@angular/http";
 
-
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 
 @Component({
   
@@ -22,6 +22,7 @@ export class HomePage {
   public result_html:string;
   public result_html1:string[]=[];
   public search_send:string;
+  public bar_scan_=<any>{};
 
   public result_html_0:string=<any>{};
   public items0:string[]=[];
@@ -39,6 +40,7 @@ export class HomePage {
     public alertCtrl: AlertController,
     public fb: FormBuilder,
     public platform: Platform,
+    private barcodeScanner: BarcodeScanner,
     public http:Http) 
     {
     
@@ -48,27 +50,28 @@ export class HomePage {
  
     
    
+
+
      
 
     onScroll(event){
-      //console.log(`ScrollEvent: ${event}`);
-    
+     
       var checktop:number={event}.event.scrollTop;
       //console.log({event}.event.scrollTop);
       let elem = <HTMLElement>document.querySelector(".tabbar");
       let elem2 = <HTMLElement>document.querySelector(".scroll-content");
 
       if(checktop<50){
-        //console.log('this is topppppppppp');
-        elem.style.transition = 'opacity 2s  ease-in !important';
+       
+        //elem.style.transition = 'opacity 2s  ease-in !important';
         elem.style.display = 'flex';      
         elem2.style.margin = '0px';
        
        
       }
       else if(checktop>51){
-        //console.log('this is down');
-        elem.style.transition = 'opacity 2s  ease-in !important';
+       
+        
         elem.style.display = 'none';      
         elem2.style.margin = '0px';
         }
@@ -80,7 +83,7 @@ export class HomePage {
     
 
       go_top() {     
-        this.content.scrollTo(0,5,10);
+        this.content.scrollTo(0,5,600);
       }
 
   alert_show(text_message) {
@@ -121,13 +124,26 @@ export class HomePage {
   }
 
 
+  barcodescan() {
    
+
+    this.barcodeScanner.scan().then((barcodeData) => {
+    
+          
+      //alert("type "+barcodeData.format+ " data "+barcodeData.text);
+      this.bar_scan_ = barcodeData.text.split("-");
+      this.check(this.bar_scan_[3]);
+     
+    }, (err) => {
+      alert('ไม่สามารถเชื่อมต่อได้ _ '+err);
+     
+    });
+  }
 
 
   post_data(search_send=""){
     
-   
-    // console.log(search_send)
+  
      var link = this.baseURL;
  
      var headers = new Headers();
@@ -168,8 +184,7 @@ export class HomePage {
 
   check(number_input=''){ 
    
-    
-    
+   
     if(number_input==''){
       this.presentAlert("กรุณาใส่ตัวเลข 6 หลักเท่านั้น");
       return false;
@@ -179,7 +194,6 @@ export class HomePage {
     return false;
    }
 
-   //alert(this.todo.search);
  
     let check=0;
     for(let a=0;  a<this.result_html.length; a++){

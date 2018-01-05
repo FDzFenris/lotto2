@@ -12,16 +12,24 @@
 <ion-content padding  (ionScroll)="onScroll($event)" >
   <br>
   
-  <h2>Welcome to FDzFenris </h2>
+  <h2>LOT </h2>
 
-  <ion-item>
-
-    <ion-input placeholder="ตรวจสลากกินแบ่งรัฐบาล " name="input1" id="input1" type="tel" maxlength="6" [(ngModel)]="todo.search">
-    </ion-input>
-
-  </ion-item>
-  <button ion-button block color="dark" (click)="check(todo.search)">เช็คหวย </button>
-
+  <ion-grid class="grid_top" >
+      <ion-row style="background:rgb(231, 226, 226);">
+          
+        <ion-col col-9>
+        <ion-input  class="input_scan"  placeholder="ตรวจสลากกินแบ่งรัฐบาล " name="input1" id="input1" type="tel" maxlength="6" [(ngModel)]="todo.search"></ion-input>
+        </ion-col>
+        <ion-col col-3>            
+           <div class="qrcode"  (click)="barcodescan()"><img src="assets/img/qr.png" style="display:block;width:50%;height:auto;margin-left:auto;margin-right:auto;" /></div>
+          </ion-col>
+        <ion-col col-12>
+        <button ion-button block color="dark" (click)="check(todo.search)"> <ion-icon name="search" style="zoom:1.5;"> </ion-icon>  เช็คหวย </button>
+        </ion-col>
+    </ion-row>
+  </ion-grid>
+  
+ 
   <ion-fab bottom right>
       <button (click)="go_top()" ion-fab mini  color="primary">
       <ion-icon name="arrow-dropup-circle"  ></ion-icon>
