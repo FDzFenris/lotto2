@@ -14,6 +14,8 @@
   
   <h2>LOT </h2>
 
+
+
   <ion-grid class="grid_top" >
       <ion-row style="background:rgb(231, 226, 226);">
           
@@ -24,7 +26,7 @@
            <div class="qrcode"  (click)="barcodescan()"><img src="assets/img/qr.png" style="display:block;width:50%;height:auto;margin-left:auto;margin-right:auto;" /></div>
           </ion-col>
         <ion-col col-12>
-        <button ion-button block color="dark" (click)="check(todo.search)"> <ion-icon name="search" style="zoom:1.5;"> </ion-icon>  เช็คหวย </button>
+        <button class="button_send" ion-button block color="dark" (click)="check(todo.search)"> <ion-icon name="search" style="zoom:1.5;"> </ion-icon>  เช็คหวย </button>
         </ion-col>
     </ion-row>
   </ion-grid>
@@ -34,6 +36,12 @@
       <button (click)="go_top()" ion-fab mini  color="primary">
       <ion-icon name="arrow-dropup-circle"  ></ion-icon>
       </button>
+  </ion-fab>
+
+  <ion-fab  bottom right style=" margin-bottom:50px;">
+    <button  (click)="this.post_data()" ion-fab mini  color="dark">
+    <ion-icon  ios="ios-refresh" md="md-refresh"  ></ion-icon>
+    </button>
   </ion-fab>
  
   

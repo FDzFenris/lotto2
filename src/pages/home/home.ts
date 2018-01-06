@@ -45,13 +45,29 @@ export class HomePage {
     {
     
      
-    this.baseURL='http://fdzferrir.esy.es/soon/lottoly.php';
+    //this.baseURL='http://fdzferrir.esy.es/soon/lottoly.php';
+    //this.baseURL='http://localhost/newionic/lottoly.php';
+    this.baseURL='http://27.254.81.49:2894/soon/lottoly.php';
     }
  
     
    
 
+    barcodescan() {
+   
 
+      this.barcodeScanner.scan().then((barcodeData) => {
+      
+            
+        //alert("type "+barcodeData.format+ " data "+barcodeData.text);
+        this.bar_scan_ = barcodeData.text.split("-");
+        this.check(this.bar_scan_[3]);
+       
+      }, (err) => {
+        alert('ไม่สามารถเชื่อมต่อได้ _ '+err);
+       
+      });
+    }
      
 
     onScroll(event){
@@ -83,7 +99,7 @@ export class HomePage {
     
 
       go_top() {     
-        this.content.scrollTo(0,5,600);
+        this.content.scrollTo(0,5,1200);
       }
 
   alert_show(text_message) {
@@ -124,25 +140,12 @@ export class HomePage {
   }
 
 
-  barcodescan() {
-   
 
-    this.barcodeScanner.scan().then((barcodeData) => {
-    
-          
-      //alert("type "+barcodeData.format+ " data "+barcodeData.text);
-      this.bar_scan_ = barcodeData.text.split("-");
-      this.check(this.bar_scan_[3]);
-     
-    }, (err) => {
-      alert('ไม่สามารถเชื่อมต่อได้ _ '+err);
-     
-    });
-  }
 
 
   post_data(search_send=""){
     
+    console.log("post");
   
      var link = this.baseURL;
  
