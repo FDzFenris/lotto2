@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Http, Headers, RequestOptions } from "@angular/http";
 
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { LoadingController } from 'ionic-angular';
 
 @Component({
   
@@ -30,6 +31,8 @@ export class HomePage {
  
   public todo = <any>{};
 
+  public scroll_now:number;
+
   tabBarElement: any;
 
  
@@ -41,6 +44,7 @@ export class HomePage {
     public fb: FormBuilder,
     public platform: Platform,
     private barcodeScanner: BarcodeScanner,
+    public loadingCtrl: LoadingController,
     public http:Http) 
     {
     
@@ -51,7 +55,18 @@ export class HomePage {
     }
  
     
-   
+    presentLoadingDefault() {
+      let loading = this.loadingCtrl.create({
+        content: 'Please wait...'
+      });
+    
+      loading.present();
+    
+      setTimeout(() => {
+        this.post_data();
+        loading.dismiss();
+      }, 1200);
+    }
 
     barcodescan() {
    
@@ -68,11 +83,12 @@ export class HomePage {
        
       });
     }
-     
-
-    onScroll(event){
+    
+    ///// ตัวเช็คตำแหน่ง ปัจจุบัน ตาม scroll ที่อยู่ ////
+  onScroll(event){
      
       var checktop:number={event}.event.scrollTop;
+      this.scroll_now=checktop;
       //console.log({event}.event.scrollTop);
       let elem = <HTMLElement>document.querySelector(".tabbar");
       let elem2 = <HTMLElement>document.querySelector(".scroll-content");
@@ -98,9 +114,8 @@ export class HomePage {
       }
     
 
-      go_top() {     
-        this.content.scrollTo(0,5,1200);
-      }
+  go_top(){ this.content.scrollTo(0,5,this.scroll_now); } ///จะไปหยัง ตำแหน่งบนสุด scroll(5)  if โดยระยะเวลา = ตำแหน่ง scroll ปัจจุบัน
+
 
   alert_show(text_message) {
     let toast = this.toastCtrl.create({
@@ -144,6 +159,8 @@ export class HomePage {
 
 
   post_data(search_send=""){
+
+    
     
     console.log("post");
   
@@ -273,8 +290,9 @@ export class HomePage {
   }
 
   ionViewDidLoad(){
-    
-    this.post_data();
+    this.presentLoadingDefault()
+   
+    //this.post_data();
     
 
    }
