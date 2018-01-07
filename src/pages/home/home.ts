@@ -3,21 +3,25 @@ import { NavController, NavParams,AlertController,Platform,Content   } from 'ion
 import { ToastController } from 'ionic-angular/components/toast/toast-controller';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Http, Headers, RequestOptions } from "@angular/http";
-
-import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { LoadingController } from 'ionic-angular';
+
+import { AndroidPermissions } from '@ionic-native/android-permissions';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+
+
 
 @Component({
   
   selector: 'page-home',
   templateUrl: 'home.html'
 })
-export class HomePage {
+export  class HomePage   {
 
   @ViewChild(Content)
   content:Content;
 
 
+   
   public formLogin : FormGroup;
   public baseURL:string;
   public result_html:string;
@@ -32,6 +36,7 @@ export class HomePage {
   public todo = <any>{};
 
   public scroll_now:number;
+  public serviceData:string;
 
   tabBarElement: any;
 
@@ -43,19 +48,28 @@ export class HomePage {
     public alertCtrl: AlertController,
     public fb: FormBuilder,
     public platform: Platform,
-    private barcodeScanner: BarcodeScanner,
     public loadingCtrl: LoadingController,
+
+
+    public androidPermissions: AndroidPermissions,
+    private barcodeScanner: BarcodeScanner,
+   
     public http:Http) 
     {
     
-     
+      
     //this.baseURL='http://fdzferrir.esy.es/soon/lottoly.php';
     //this.baseURL='http://localhost/newionic/lottoly.php';
     this.baseURL='http://27.254.81.49:2894/soon/lottoly.php';
     }
+    
  
     
-    presentLoadingDefault() {
+   /*  push() {
+      this.navCtrl.push(ContactPage);
+    } */
+  
+    LoadingDefault() {
       let loading = this.loadingCtrl.create({
         content: 'Please wait...'
       });
@@ -65,15 +79,13 @@ export class HomePage {
       setTimeout(() => {
         this.post_data();
         loading.dismiss();
-      }, 1200);
+      }, 500);
     }
 
     barcodescan() {
    
-
       this.barcodeScanner.scan().then((barcodeData) => {
-      
-            
+                  
         //alert("type "+barcodeData.format+ " data "+barcodeData.text);
         this.bar_scan_ = barcodeData.text.split("-");
         this.check(this.bar_scan_[3]);
@@ -91,26 +103,9 @@ export class HomePage {
       this.scroll_now=checktop;
       //console.log({event}.event.scrollTop);
       let elem = <HTMLElement>document.querySelector(".tabbar");
-      let elem2 = <HTMLElement>document.querySelector(".scroll-content");
-
-      if(checktop<50){
-       
-        //elem.style.transition = 'opacity 2s  ease-in !important';
-        elem.style.display = 'flex';      
-        elem2.style.margin = '0px';
-       
-       
-      }
-      else if(checktop>51){
-       
-        
-        elem.style.display = 'none';      
-        elem2.style.margin = '0px';
-        }
-        else{
-
-        }
-       
+   
+      if(checktop<50){elem.style.display = 'flex'; }
+      else if(checktop>51){elem.style.display = 'none';}       
       }
     
 
@@ -290,7 +285,7 @@ export class HomePage {
   }
 
   ionViewDidLoad(){
-    this.presentLoadingDefault()
+    this.LoadingDefault()
    
     //this.post_data();
     

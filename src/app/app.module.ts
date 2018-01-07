@@ -5,18 +5,21 @@ import { MyApp } from './app.component';
 
 
 
-import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { AndroidPermissions } from '@ionic-native/android-permissions';
 
 
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
+
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HttpModule } from '@angular/http';
+
 
 @NgModule({
   declarations: [
@@ -46,9 +49,12 @@ import { HttpModule } from '@angular/http';
   providers: [
     StatusBar,
     SplashScreen,
-   
+    AndroidPermissions,
     BarcodeScanner,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
+   
   ]
 })
-export class AppModule {}
+export class AppModule {
+ 
+}

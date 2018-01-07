@@ -10,9 +10,8 @@
 </ion-header>
 
 <ion-content padding  (ionScroll)="onScroll($event)" >
-  <br>
-  
-  <h2>LOTTOLY </h2>
+ 
+  <ion-chip><ion-label><h2>LOTTOLY</h2> </ion-label></ion-chip>
 
 
 
@@ -28,6 +27,10 @@
         <ion-col col-12>
         <button class="button_send" ion-button block color="dark" (click)="check(todo.search)"> <ion-icon name="search" style="zoom:1.5;"> </ion-icon>  เช็คหวย </button>
         </ion-col>
+
+        <ion-col col-12>
+          <button ion-button block (click)="push()"> <ion-icon > </ion-icon>  aaaa </button>
+          </ion-col>
     </ion-row>
   </ion-grid>
   

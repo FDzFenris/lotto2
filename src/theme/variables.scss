@@ -48,10 +48,9 @@ $colors: (
 }
 .tabbar{
   top: 0px !important; 
- 
-  transition: opacity 1s ease-in;
-      
-  
+  }
+.scroll-content{
+  margin-top: 43px !important; 
 }
 .slow_show{
   opacity:0; 
