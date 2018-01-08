@@ -47,7 +47,9 @@ $colors: (
    }
 }
 .tabbar{
-  top: 0px !important; 
+  top: 0 !important; 
+  z-index: 1;
+  transition: top 0.25s ease;
   }
 .scroll-content{
   margin-top: 43px !important; 

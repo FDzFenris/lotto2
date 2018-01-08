@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar>
-    <ion-title text-center>
+    <ion-title text-center class="bar-header">
 
       {{this.todo.showhead}}
 
@@ -42,7 +42,7 @@
   </ion-fab>
 
   <ion-fab  bottom right style=" margin-bottom:50px;">
-    <button  (click)="this.presentLoadingDefault()" ion-fab mini  color="dark">
+    <button  (click)="this.LoadingDefault()" ion-fab mini  color="dark">
     <ion-icon  ios="ios-refresh" md="md-refresh"  ></ion-icon>
     </button>
   </ion-fab>

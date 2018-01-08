@@ -69,7 +69,8 @@ export  class HomePage   {
       this.navCtrl.push(ContactPage);
     } */
   
-    LoadingDefault() {
+    LoadingDefault() {     
+      
       let loading = this.loadingCtrl.create({
         content: 'Please wait...'
       });
@@ -102,11 +103,19 @@ export  class HomePage   {
       var checktop:number={event}.event.scrollTop;
       this.scroll_now=checktop;
       //console.log({event}.event.scrollTop);
-      let elem = <HTMLElement>document.querySelector(".tabbar");
-   
-      if(checktop<50){elem.style.display = 'flex'; }
-      else if(checktop>51){elem.style.display = 'none';}       
+      //let elem = <HTMLElement>document.querySelector(".tabbar");
+      let elem = <HTMLElement>document.querySelector(".bar-header");
+
+      if(checktop<50){elem.style.zIndex  = '0'; }
+      else if(checktop>51){elem.style.zIndex = '9';}       
       }
+   
+    /*   if(checktop<50){elem.style.top = '0'; }
+      else if(checktop>51){elem.style.top = '-44px';}       
+      } */
+    /*   if(checktop<50){elem.style.display = 'flex'; }
+      else if(checktop>51){elem.style.display = 'none';}       
+      } */
     
 
   go_top(){ this.content.scrollTo(0,5,this.scroll_now); } ///จะไปหยัง ตำแหน่งบนสุด scroll(5)  if โดยระยะเวลา = ตำแหน่ง scroll ปัจจุบัน
@@ -287,11 +296,13 @@ export  class HomePage   {
   ionViewDidLoad(){
     this.LoadingDefault()
    
+   
     //this.post_data();
     
 
    }
 
+  
 
 
 }
