@@ -38,7 +38,8 @@ $colors: (
   secondary:  #32db64,
   danger:     #f53d3d,
   light:      #f4f4f4,
-  dark:       #222
+  dark:       #222,
+  custom1 : rgb(212, 212, 212)
 );
 
 .toast-success {
@@ -48,21 +49,36 @@ $colors: (
 }
 .tabbar{
   top: 0 !important; 
-  z-index: 1;
-  transition: top 0.25s ease;
+
   }
 .scroll-content{
   margin-top: 43px !important; 
 }
-.slow_show{
-  opacity:0; 
-  -webkit-transition: opacity 2s ease-in;
-  -moz-transition: opacity 2s ease-in;
-  -o-transition: opacity 2s ease-in;
-  -ms-transition: opacity 2s ease-in;
-  transition: opacity 2s ease-in;
-}
 
+.alertcss  .alert-wrapper{
+  color:#1082ec;
+  min-width: 300px;
+  border-radius: 7px!important; 
+  
+  }
+  .data_alert{
+    color:red !important;
+  }
+  .alert-head{
+  
+    text-align: center!important;
+    
+   }
+  .alert-button{
+   width: 100%!important;
+   justify-content: center!important;
+    background-color:#f3f0f0!important;
+  }
+  .alert-button span{
+   
+    justify-content: center!important;
+
+   }
 
 
 // App iOS Variables

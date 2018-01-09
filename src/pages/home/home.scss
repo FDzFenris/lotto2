@@ -24,25 +24,35 @@ page-home {
 
 
       .herder_lotto{
+     
         border: none;
         padding: 10px;
-        color : rgb(4, 56, 124);
-
+        color : rgb(0, 71, 151);
+        font-weight: bold  !important;
+        font-size: 18px;
+       
       }
 
       .body_lotto{
-        border: none;
-       
-/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f0f9ff+0,cbebff+47,a1dbff+100;Blue+3D+%2313 */
+        border-radius: 7px!important; 
+        font-weight: 500;
+        border-width: 3px;
+       border-style: solid;
+        border-color: rgb(204, 199, 199) !important;
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#eeeeee+0,eeeeee+100;Grey+Flat */
+background: rgb(238,238,238); /* Old browsers */
+background: -moz-linear-gradient(top, rgba(238,238,238,1) 0%, rgba(238,238,238,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, rgba(238,238,238,1) 0%,rgba(238,238,238,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, rgba(238,238,238,1) 0%,rgba(238,238,238,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#eeeeee',GradientType=0 ); /* IE6-9 */
 
-      
       }
 
       .footer_lotto{
         border: none;
         padding: 10px;
         color : rgb(36, 36, 36);
-      
+        font-size: 18px;
       }
 
       .center {
@@ -56,11 +66,23 @@ page-home {
       background:whitesmoke; 
       border-width: 3px;
        border-style: solid;
-        border-color: rgb(8, 155, 223) !important;
+        border-color: rgb(54, 54, 54) !important;
         margin-top: 2px;padding: 3px;
         border-radius: 15px; 
 
     }
+    .button_send {
+      border-radius: 7px; 
+      background: rgb(96, 196, 99)!important;
+      color: white;
+      text-decoration: none;
+      display: inline-block;
+      border: 1px solid green;
+   
+     
+      transition: all 0.4s
+  }
+
     .button_send:hover {
       background: #4CAF50!important;
       color: white;
@@ -76,12 +98,14 @@ page-home {
      background:rgb(250, 250, 250);
      margin-top: 2px;padding: 3px;
      border-radius: 5px; 
+     
     }
 
     .grid_top{
       border-width: 3px;
       border-style: solid;
-      border-color: rgb(11, 147, 211) !important;
+      border-color: rgb(104, 104, 104) !important;
+      background: rgb(184, 185, 187)!important;
      
      }
 
@@ -93,6 +117,7 @@ page-home {
   }
 
 
+ 
 
   
       

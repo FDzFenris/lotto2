@@ -11,7 +11,7 @@
 
 <ion-content padding  (ionScroll)="onScroll($event)" >
  
-  <ion-chip><ion-label><h2>LOTTOLY</h2> </ion-label></ion-chip>
+  <ion-chip><ion-label><h2 style="margin-top:2px;">LOTTOLY</h2> </ion-label></ion-chip>
 
 
 
@@ -19,18 +19,16 @@
       <ion-row style="background:rgb(231, 226, 226);">
           
         <ion-col col-9>
-        <ion-input  class="input_scan"  placeholder="ตรวจสลากกินแบ่งรัฐบาล " name="input1" id="input1" type="tel" maxlength="6" [(ngModel)]="todo.search"></ion-input>
+        <ion-input  class="input_scan"   placeholder="ตรวจสลากกินแบ่งรัฐบาล " name="input1" id="input1" type=text  maxlength="6" [(ngModel)]="todo.search"></ion-input>
         </ion-col>
         <ion-col col-3>            
            <div class="qrcode"  (click)="barcodescan()"><img src="assets/img/qr.png" style="display:block;width:50%;height:auto;margin-left:auto;margin-right:auto;" /></div>
           </ion-col>
         <ion-col col-12>
-        <button class="button_send" ion-button block color="dark" (click)="check(todo.search)"> <ion-icon name="search" style="zoom:1.5;"> </ion-icon>  เช็คหวย </button>
+        <button class="button_send" ion-button block color="secondary" (click)="check(todo.search)"> <ion-icon name="search" style="zoom:1.5;"> </ion-icon>  เช็คหวย </button>
         </ion-col>
 
-        <ion-col col-12>
-          <button ion-button block (click)="push()"> <ion-icon > </ion-icon>  aaaa </button>
-          </ion-col>
+       
     </ion-row>
   </ion-grid>
   
@@ -48,16 +46,16 @@
   </ion-fab>
  
   
-  <ion-navbar color='primary'  >
+  <ion-navbar color='custom1'  >
     <ion-list *ngFor="let item2 of result_html; ">
 
       <ion-item>
               <ion-grid>
                 <ion-row>
                   <ion-col text-center col-12 class='herder_lotto'>
-                    <h2>
-                      <b>{{item2.name_reward}}</b>
-                    </h2>
+                   
+                      {{item2.name_reward}}
+                  
                   </ion-col>
                 </ion-row>
               </ion-grid>
@@ -82,7 +80,7 @@
                 <ion-grid>
                   <ion-row>
                     <ion-col text-center col-12 class='footer_lotto'>
-                      <h6> {{item2.reward}} </h6>
+                      {{item2.reward}} 
                     </ion-col>
 
                   </ion-row>

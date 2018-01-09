@@ -8,6 +8,8 @@ import { LoadingController } from 'ionic-angular';
 import { AndroidPermissions } from '@ionic-native/android-permissions';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 
+//import { ContactPage } from '../../pages/contact/contact';
+
 
 
 @Component({
@@ -20,8 +22,6 @@ export  class HomePage   {
   @ViewChild(Content)
   content:Content;
 
-
-   
   public formLogin : FormGroup;
   public baseURL:string;
   public result_html:string;
@@ -56,14 +56,12 @@ export  class HomePage   {
    
     public http:Http) 
     {
-    
-      
     //this.baseURL='http://fdzferrir.esy.es/soon/lottoly.php';
     //this.baseURL='http://localhost/newionic/lottoly.php';
     this.baseURL='http://27.254.81.49:2894/soon/lottoly.php';
     }
     
- 
+   
     
    /*  push() {
       this.navCtrl.push(ContactPage);
@@ -103,22 +101,23 @@ export  class HomePage   {
       var checktop:number={event}.event.scrollTop;
       this.scroll_now=checktop;
       //console.log({event}.event.scrollTop);
-      //let elem = <HTMLElement>document.querySelector(".tabbar");
-      let elem = <HTMLElement>document.querySelector(".bar-header");
+    
+      let elem = <HTMLElement>document.querySelector(".tabbar");
 
-      if(checktop<50){elem.style.zIndex  = '0'; }
-      else if(checktop>51){elem.style.zIndex = '9';}       
+      if(checktop<50){elem.style.zIndex  = '9'; }
+      else if(checktop>51){elem.style.zIndex = '0';}       
       }
    
     /*   if(checktop<50){elem.style.top = '0'; }
       else if(checktop>51){elem.style.top = '-44px';}       
       } */
+
     /*   if(checktop<50){elem.style.display = 'flex'; }
       else if(checktop>51){elem.style.display = 'none';}       
       } */
     
 
-  go_top(){ this.content.scrollTo(0,5,this.scroll_now); } ///จะไปหยัง ตำแหน่งบนสุด scroll(5)  if โดยระยะเวลา = ตำแหน่ง scroll ปัจจุบัน
+  go_top(){ this.content.scrollTo(0,1,this.scroll_now); } ///จะไปหยัง ตำแหน่งบนสุด scroll(5)  if โดยระยะเวลา = ตำแหน่ง scroll ปัจจุบัน
 
 
   alert_show(text_message) {
@@ -132,12 +131,32 @@ export  class HomePage   {
     toast.present();
   }
 
+
+/* testalert(){
+
+  let alert = this.alertCtrl.create({
+    title: 'Hello',
+    buttons: [{
+      text: 'Ok',
+     
+      handler: () => {     
+     // this.navCtrl.push(ContactPage);
+     }
+    }],
+    cssClass: 'alertcss',
+  });
+  
+  alert.present();
+} */
+
+
   presentAlert(text_message,sub_message='') {
     let alert = this.alertCtrl.create({
       title: text_message,
       subTitle: sub_message,
-      message: '55555555555555555555555',
-      buttons: ['OK']
+      message: '',
+      buttons: ['OK'],
+      cssClass: 'alertcss'
     });
     alert.present();
   }
@@ -243,7 +262,7 @@ export  class HomePage   {
 
               if(this.filtered!=''){
 
-                this.presentAlert('ยินดีด้วยคุณถูกรางวัล <br>'+this.result_html[a]['name_reward'],this.result_html[a]['reward']);
+                this.presentAlert('<h3>ยินดีด้วยคุณถูกรางวัล </h3>'+'<h4  class="data_alert"  >'+this.result_html[a]['name_reward']+'</h4>',this.result_html[a]['reward']);
                //alert('ยินดีด้วยคุณถูกรางวัล '+this.result_html[a]['name_reward']+'  '+this.result_html[a]['reward']);              
               }
               else{
@@ -253,7 +272,7 @@ export  class HomePage   {
 
                       if(parseInt(number_input)==up||parseInt(number_input)==down){
 
-                        this.presentAlert('ยินดีด้วยคุณถูกรางวัล <br> ข้างเคียงรางวัลที่ 1','รางวัลละ 100,000 บาท');
+                        this.presentAlert('<h3>ยินดีด้วยคุณถูกรางวัล </h3> <h4  class="data_alert"  >ข้างเคียงรางวัลที่ 1</h4>','รางวัลละ 100,000 บาท');
                         this.alert_show('ยินดีด้วยคุณถูกรางวัล ข้างเคียงรางวัลที่ 1 รางวัลละ 100,000 บาท');
                         break;
 
