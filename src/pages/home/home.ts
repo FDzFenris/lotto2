@@ -1,7 +1,7 @@
 import { Component,ViewChild  } from '@angular/core';
 import { NavController, NavParams,AlertController,Platform,Content   } from 'ionic-angular';
 import { ToastController } from 'ionic-angular/components/toast/toast-controller';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup,Validators  } from '@angular/forms';
 import { Http, Headers, RequestOptions } from "@angular/http";
 import { LoadingController } from 'ionic-angular';
 
@@ -22,7 +22,7 @@ export  class HomePage   {
   @ViewChild(Content)
   content:Content;
 
-  public formLogin : FormGroup;
+  public form_Lottoly : FormGroup;
   public baseURL:string;
   public result_html:string;
   public result_html1:string[]=[];
@@ -40,16 +40,14 @@ export  class HomePage   {
 
   tabBarElement: any;
 
- 
   constructor(
     public navCtrl: NavController,
     public toastCtrl:ToastController,
     public navParams: NavParams,
     public alertCtrl: AlertController,
-    public fb: FormBuilder,
+    public formbuilder: FormBuilder,
     public platform: Platform,
     public loadingCtrl: LoadingController,
-
 
     public androidPermissions: AndroidPermissions,
     private barcodeScanner: BarcodeScanner,
@@ -59,14 +57,31 @@ export  class HomePage   {
     //this.baseURL='http://fdzferrir.esy.es/soon/lottoly.php';
     //this.baseURL='http://localhost/newionic/lottoly.php';
     this.baseURL='http://27.254.81.49:2894/soon/lottoly.php';
+
+    this.Validat_number();   
+   
     }
     
+
    
+    Validat_number(){
+      this.form_Lottoly = this.formbuilder.group({
+        "todo.search"  : ["", Validators.compose([
+          Validators.required,Validators.pattern('^[0-9]*$')])]
+     });
+    }
+
+    Validat_string(){
+      this.form_Lottoly = this.formbuilder.group({
+        "todo.search": ['', Validators.compose([Validators.required,Validators.pattern('[a-zA-Z]*')])]
+       
+    });
+    }
     
    /*  push() {
       this.navCtrl.push(ContactPage);
     } */
-  
+   
     LoadingDefault() {     
       
       let loading = this.loadingCtrl.create({
@@ -108,7 +123,7 @@ export  class HomePage   {
       else if(checktop>51){elem.style.zIndex = '0';}       
       }
    
-    /*   if(checktop<50){elem.style.top = '0'; }
+     /*  if(checktop<50){elem.style.top = '0'; }
       else if(checktop>51){elem.style.top = '-44px';}       
       } */
 

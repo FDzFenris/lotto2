@@ -10,22 +10,23 @@
 </ion-header>
 
 <ion-content padding  (ionScroll)="onScroll($event)" >
- 
+  <form [formGroup]="form_Lottoly" (ngSubmit)="check(todo.search)">
   <ion-chip><ion-label><h2 style="margin-top:2px;">LOTTOLY</h2> </ion-label></ion-chip>
 
-
+  
 
   <ion-grid class="grid_top" >
       <ion-row style="background:rgb(231, 226, 226);">
           
         <ion-col col-9>
-        <ion-input  class="input_scan"   placeholder="ตรวจสลากกินแบ่งรัฐบาล " name="input1" id="input1" type=text  maxlength="6" [(ngModel)]="todo.search"></ion-input>
+        <ion-input  class="input_scan"  formControlName="todo.search"  placeholder="ตรวจสลากกินแบ่งรัฐบาล "  type="text"  maxlength="6" [(ngModel)]="todo.search"></ion-input>
         </ion-col>
         <ion-col col-3>            
            <div class="qrcode"  (click)="barcodescan()"><img src="assets/img/qr.png" style="display:block;width:50%;height:auto;margin-left:auto;margin-right:auto;" /></div>
           </ion-col>
         <ion-col col-12>
-        <button class="button_send" ion-button block color="secondary" (click)="check(todo.search)"> <ion-icon name="search" style="zoom:1.5;"> </ion-icon>  เช็คหวย </button>
+            
+        <button class="button_send" ion-button block color="secondary" [disabled]="!form_Lottoly.valid" > <ion-icon name="search" style="zoom:1.5;"> </ion-icon>  เช็คหวย </button>
         </ion-col>
 
        
@@ -33,17 +34,7 @@
   </ion-grid>
   
  
-  <ion-fab bottom right>
-      <button  (click)="go_top()" ion-fab mini  color="primary">
-      <ion-icon name="arrow-dropup-circle"  ></ion-icon>
-      </button>
-  </ion-fab>
-
-  <ion-fab  bottom right style=" margin-bottom:50px;">
-    <button  (click)="this.LoadingDefault()" ion-fab mini  color="dark">
-    <ion-icon  ios="ios-refresh" md="md-refresh"  ></ion-icon>
-    </button>
-  </ion-fab>
+  
  
   
   <ion-navbar color='custom1'  >
@@ -91,6 +82,18 @@
 
     </ion-list>
   </ion-navbar >
+</form>
+<ion-fab bottom right>
+    <button  (click)="go_top()" ion-fab mini  color="primary">
+    <ion-icon name="arrow-dropup-circle"  ></ion-icon>
+    </button>
+</ion-fab>
+
+<ion-fab  bottom right style=" margin-bottom:50px;">
+  <button  (click)="this.LoadingDefault()" ion-fab mini  color="dark">
+  <ion-icon  ios="ios-refresh" md="md-refresh"  ></ion-icon>
+  </button>
+</ion-fab>
 </ion-content  >
 
 <!-- 
