@@ -12,7 +12,9 @@ export class AboutPage {
   public baseURL:string;
   public result_html:string;
 
-  public items0:string[];
+
+  //public item_re2=<any>{};
+  public item_re2:string[]=[];
 
   constructor(
     public navCtrl: NavController,
@@ -60,18 +62,25 @@ export class AboutPage {
 
     
        this.result_html=data_api[0].re2;
-       
       
-for(let i=0; i<=11;i++){
+       console.log(this.result_html);
+       let i2=0;
+for(let i=0;  i<=11;i++){
   
   if(this.result_html[i]==null){
 
     //console.log('undifiend '+i)
   }
   else{
-    console.log(i+' : '+this.result_html[i]);
+    this.item_re2[i2]=i+' ครั้ง : '+this.result_html[i];
+    console.log(i+' : '+this.item_re2[i2]);
+    i2++;
   }
+
+
 }
+
+console.log(' : '+this.item_re2);
 
        }, error => {
          //console.log(error);
