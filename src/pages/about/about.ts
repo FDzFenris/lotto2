@@ -1,38 +1,113 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-//import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { Http, Headers, RequestOptions } from "@angular/http";
+import { ToastController } from 'ionic-angular/components/toast/toast-controller';
 
 @Component({
   selector: 'page-about',
   templateUrl: 'about.html'
 })
 export class AboutPage {
-  tabBarElement: any;
+  
+  public baseURL:string;
+  public result_html:string;
+
+  public items0:string[];
 
   constructor(
-    public navCtrl: NavController  
-    //private barcodeScanner: BarcodeScanner
-    ) {
-    
+    public navCtrl: NavController,
+    public http:Http,
+    public toastCtrl:ToastController ) {
+
+      this.baseURL='http://27.254.81.49:2894/soon/lottoly_20year.php';
+
   }
  
- /*  barcodescan() {
-   
-
-    this.barcodeScanner.scan().then((barcodeData) => {
-    
-          
-      alert("type "+barcodeData.format+ " data "+barcodeData.text);
-
-     
-    }, (err) => {
-      alert('ไม่สามารถเชื่อมต่อได้ _ '+err);
+  alert_show(text_message) {
+    let toast = this.toastCtrl.create({
+      message: text_message,
+      duration: 5000,
+      position: "bottom",
+      cssClass: "toast-success"
      
     });
+    toast.present();
   }
- */
-
-
  
+  post_data(){
 
+    
+    
+    console.log("post abount");
+  
+     var link = this.baseURL;
+ 
+     var headers = new Headers();
+     headers.append('Content-Type', 'application/x-www-form-urlencoded' );
+     let options = new RequestOptions({ headers: headers });
+
+     let post_to_api =  {
+        
+     }
+
+    
+ 
+     this.http.post(link, JSON.stringify(post_to_api), options)
+       .subscribe(data => {
+         console.log(data);
+       
+       let data_api=JSON.parse(data['_body']);
+
+    
+       this.result_html=data_api[0].re2;
+       
+      
+for(let i=0; i<=11;i++){
+  
+  if(this.result_html[i]==null){
+
+    //console.log('undifiend '+i)
+  }
+  else{
+    console.log(i+' : '+this.result_html[i]);
+  }
 }
+
+       }, error => {
+         //console.log(error);
+        
+         this.alert_show('กรุณาเชื่อมต่ออินเตอร์เน็ต');
+        
+        
+       });
+ 
+   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ionViewDidLoad(){
+    this.post_data()
+   
+   
+    
+
+   }
+
+
+
+
+
+
+
+  
+  }
