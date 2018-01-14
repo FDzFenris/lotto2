@@ -6,17 +6,36 @@
   </ion-navbar>
 </ion-header>  
 <ion-content padding="">
- 
+    <ion-chip><ion-label><h2 style="margin-top:2px;">สถิติ หวยย้อนหลัง 20 ปี</h2> </ion-label></ion-chip>
+    <ion-grid>
+      
+        <ion-row >  
+            <ion-col   class="center " col-3 ><button (click)="post_data_2()" class="button_top" ion-button full>ท้าย 2 ตัว </button></ion-col>
+            <ion-col   class="center " col-3 ><button (click)="post_data_3()" class="button_top" ion-button full>หน้า/ท้าย 3 ตัว </button></ion-col>
+            <ion-col   class="center " col-3 ><button (click)="post_data_2_top()" class="button_top" ion-button full>2 ตัว บน</button></ion-col>
+            <ion-col   class="center " col-3 ><button (click)="post_data_3_top()" class="button_top" ion-button full>3 ตัว บน</button></ion-col>
+        </ion-row>
+    </ion-grid>
+            
+              
+      
   <ion-grid>
-      <ion-row >
-         
+      
+      <ion-row class="row_about">  
         
-          <ion-col   class="center"  col-12 *ngFor="let item2 of this.item_re2; let i = index" >
-            <ion-item>
-             {{ item2 }}
-          </ion-item>
+         <ion-col   class="center"  col-12 *ngFor=" let item2 of this.item_re2.reverse(); let i = index" >
+              
+          <ion-label class="item_label" >  {{this.item_re2_count[i]}} </ion-label>
+            
+               <ion-col   class="center"   col-sm-9 *ngFor="let item3 of item2.reverse(); " >
+               
+                  {{  item3 }}
+               
+               </ion-col>
+          
            </ion-col>
-          </ion-row>
+          
+      </ion-row>
   </ion-grid>
  
 </ion-content>  
