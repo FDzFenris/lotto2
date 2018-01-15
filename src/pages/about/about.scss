@@ -1,23 +1,33 @@
 page-about {
 
+
+ @import url('font.css');
+ .rsuregular{
+     font-family: 'rsuregular',sans-serif !important;
+ }
+
 .row_about {
     background-color: rgb(228, 228, 228);
     border-radius: 4px; 
-    padding: 0 30px 0 10px;
+   
 }
 .item_label{
     background-color: rgb(187, 189, 188) !important;
     color:whitesmoke;
-    border: 2px;
+    border: 4px;
     font-size: 120%;
     text-align: left ;
-   
+    width: 100%;
     border-radius: 4px; 
+   
 }
 .button_top{ 
     border-radius: 4px; 
-    font-size: 80%;
-  
+    font-size: 12px;
+    font-family: 'rsuregular',sans-serif !important;
+}
+.body_about{
+    padding: 0 10px 0 15px;
 }
   
 }

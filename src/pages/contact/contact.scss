@@ -1,3 +1,21 @@
 page-contact {
 
+    .bg-set{
+        background-color:rgb(38, 139, 207) !important;
+        color: azure;
+        font-family: fantasy;
+        font-size: 20px;
+        margin: -25px 15 2px !important;
+       
+       
+    }
+    ion-icon {
+        font-size: 30px; //Preferred size here
+       
+    }
+    ion-card {
+       border: 20px;
+      
+       box-shadow:         2px 2px 3px 3px #07090c !important;
+    }
 }
