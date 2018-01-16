@@ -2,7 +2,9 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Http, Headers, RequestOptions } from "@angular/http";
 import { ToastController } from 'ionic-angular/components/toast/toast-controller';
-import { empty } from 'rxjs/Observer';
+
+import { LocalNotifications } from '@ionic-native/local-notifications';
+
 
 @Component({
   selector: 'page-about',
@@ -23,12 +25,27 @@ export class AboutPage {
   constructor(
     public navCtrl: NavController,
     public http:Http,
+    public localNotifications: LocalNotifications,
     public toastCtrl:ToastController ) {
 
       this.baseURL='http://27.254.81.49:2894/soon/lottoly_20year.php';
       //this.baseURL='http://localhost/newionic/lottoly_20year.php';
 
   }
+
+  alert_moblie(){
+  this.localNotifications.schedule({
+      title: 'My first notification',
+      text: 'Thats pretty easy...',
+
+  });
+
+  console.log(this.localNotifications.schedule({
+    title: 'My first notification',
+    text: 'Thats pretty easy...',
+
+}));
+ }
  
   alert_show(text_message) {
     let toast = this.toastCtrl.create({

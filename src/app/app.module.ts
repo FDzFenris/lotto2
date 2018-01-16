@@ -10,6 +10,8 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { AndroidPermissions } from '@ionic-native/android-permissions';
 
 
+import { LocalNotifications } from '@ionic-native/local-notifications';
+
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 
@@ -50,6 +52,7 @@ import { HttpModule } from '@angular/http';
     StatusBar,
     SplashScreen,
     AndroidPermissions,
+    LocalNotifications,
     BarcodeScanner,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
    

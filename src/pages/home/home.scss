@@ -1,5 +1,11 @@
 page-home {
 
+  @import url('https://fonts.googleapis.com/css?family=Prompt');
+   
+
+  .content{
+      font-family: 'Prompt', sans-serif;
+  }
     .message {
         border: 1px solid #ccc;
         padding: 10px;
@@ -35,7 +41,7 @@ page-home {
 
       .body_lotto{
         border-radius: 7px!important; 
-        font-weight: 500;
+        font-size: 80%;
         border-width: 3px;
        border-style: solid;
         border-color: rgb(207, 202, 202) !important;

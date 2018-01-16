@@ -1,11 +1,12 @@
 page-about {
+   
+    @import url('https://fonts.googleapis.com/css?family=Prompt');
+   
 
-
- @import url('font.css');
- .rsuregular{
-     font-family: 'rsuregular',sans-serif !important;
- }
-
+    h2{
+        font-family: 'Prompt', sans-serif;
+    }
+   
 .row_about {
     background-color: rgb(228, 228, 228);
     border-radius: 4px; 
@@ -19,14 +20,17 @@ page-about {
     text-align: left ;
     width: 100%;
     border-radius: 4px; 
-   
+    padding: 0 10px 0 15px;
+    font-family: 'Prompt', sans-serif;
 }
 .button_top{ 
     border-radius: 4px; 
-    font-size: 12px;
-    font-family: 'rsuregular',sans-serif !important;
+    font-size: 11px;
+    font-family: 'Prompt', sans-serif;
+    
 }
 .body_about{
+    
     padding: 0 10px 0 15px;
 }
   
