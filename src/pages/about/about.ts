@@ -25,8 +25,8 @@ export class AboutPage {
     public http:Http,
     public toastCtrl:ToastController ) {
 
-      this.baseURL='http://27.254.81.49:2894/soon/lottoly_20year.php';
-      //this.baseURL='http://localhost/newionic/lottoly_20year.php';
+      //this.baseURL='http://27.254.81.49:2894/soon/lottoly_20year.php';
+      this.baseURL='http://localhost/newionic/lottoly_20year.php';
 
   }
  
