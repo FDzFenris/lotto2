@@ -10,8 +10,8 @@ import { LocalNotifications } from '@ionic-native/local-notifications';
   selector: 'page-about',
   templateUrl: 'about.html'
 })
-export class AboutPage {
-  
+export  class AboutPage {
+    
   public baseURL:string;
   public result_html:string;
   public result_html3:string;
@@ -35,10 +35,11 @@ export class AboutPage {
 
   alert_moblie(){
   this.localNotifications.schedule({
-      title: 'My first notification',
-      text: 'Thats pretty easy...',
-
-  });
+   
+    title: 'Chat with Irish',
+    icon: 'http://climberindonesia.com/assets/icon/ionicons-2.0.1/png/512/android-chat.png'
+  
+});
 
   console.log(this.localNotifications.schedule({
     title: 'My first notification',
