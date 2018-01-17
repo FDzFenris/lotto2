@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "54571618875",
+    "firebase_url": "https://api-project-54571618875.firebaseio.com",
+    "project_id": "api-project-54571618875",
+    "storage_bucket": "api-project-54571618875.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:54571618875:android:c20af3c7de81a6fb",
+        "android_client_info": {
+          "package_name": "com.fdzfenris.lottoly"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "54571618875-km0e9n4ko9b1bg9p3r8ef0kbpa54i09f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCSDWd5QLDwCruNb2KplnQqGe7X_xSZBI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

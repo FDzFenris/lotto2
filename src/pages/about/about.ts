@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController,Platform } from 'ionic-angular';
 import { Http, Headers, RequestOptions } from "@angular/http";
 import { ToastController } from 'ionic-angular/components/toast/toast-controller';
 
 import { LocalNotifications } from '@ionic-native/local-notifications';
+
+
+import { OneSignal } from '@ionic-native/onesignal';
 
 
 @Component({
@@ -12,6 +15,7 @@ import { LocalNotifications } from '@ionic-native/local-notifications';
 })
 export  class AboutPage {
     
+
   public baseURL:string;
   public result_html:string;
   public result_html3:string;
@@ -26,27 +30,55 @@ export  class AboutPage {
     public navCtrl: NavController,
     public http:Http,
     public localNotifications: LocalNotifications,
+    private oneSignal: OneSignal,
+    public platform: Platform,
     public toastCtrl:ToastController ) {
 
       this.baseURL='http://27.254.81.49:2894/soon/lottoly_20year.php';
       //this.baseURL='http://localhost/newionic/lottoly_20year.php';
 
+   //this.alert_moblie();
+   platform.ready().then(() =>{
+    this.oneSignal.startInit('9b5c10b8-6128-407f-950a-49b646a25436', '54571618875');
+      /*    COMMENT****
+       Notification - แจ้งเฉพาะเบื้องหลัง.
+       InAppAlert (DEFAULT) - แจ้งเบื้องหลัง และ ขณะเปิดแอฟอยู่ด้วย * ทำให้เสียสมาธิได้.
+       None - ไม่แจ้งเตือนเลย. */
+    this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.Notification);
+
+    
+    
+  
+
+   
+    /*  this.oneSignal.handleNotificationReceived().subscribe(() => {
+    // do something when notification is received
+   alert('Notification recivied');
+    });
+
+    this.oneSignal.handleNotificationOpened().subscribe(() => {
+      // do something when a notification is opened
+      alert('Notification opened');
+    });  */
+    this.oneSignal.endInit();
+
+   });
+     
   }
 
-  alert_moblie(){
-  this.localNotifications.schedule({
+
    
-    title: 'Chat with Irish',
-    icon: 'http://climberindonesia.com/assets/icon/ionicons-2.0.1/png/512/android-chat.png'
-  
-});
+  promptLocation() {
+    this.oneSignal.promptLocation();
+    alert('location prompted');
+  }
 
-  console.log(this.localNotifications.schedule({
-    title: 'My first notification',
-    text: 'Thats pretty easy...',
+  sendTags() {
+    this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.Notification);
+    alert("tags sent");
+  }
 
-}));
- }
+
  
   alert_show(text_message) {
     let toast = this.toastCtrl.create({

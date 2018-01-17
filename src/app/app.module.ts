@@ -9,7 +9,7 @@ import { MyApp } from './app.component';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { AndroidPermissions } from '@ionic-native/android-permissions';
 
-
+import { OneSignal } from '@ionic-native/onesignal';
 import { LocalNotifications } from '@ionic-native/local-notifications';
 
 import { AboutPage } from '../pages/about/about';
@@ -53,6 +53,7 @@ import { HttpModule } from '@angular/http';
     SplashScreen,
     AndroidPermissions,
     LocalNotifications,
+    OneSignal,
     BarcodeScanner,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
    
