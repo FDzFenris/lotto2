@@ -17,6 +17,7 @@ export  class AboutPage {
     
 
   public baseURL:string;
+  
   public result_html:string;
   public result_html3:string;
 
@@ -35,13 +36,18 @@ export  class AboutPage {
     public toastCtrl:ToastController ) {
 
       this.baseURL='http://27.254.81.49:2894/soon/lottoly_20year.php';
+     
       //this.baseURL='http://localhost/newionic/lottoly_20year.php';
+
 
 
       this.initializeApp();
   
      
+     
   }
+
+
 
   initializeApp() {
     this.platform.ready().then(() =>{
@@ -55,6 +61,10 @@ export  class AboutPage {
      });
   }
    
+
+ 
+
+
  
 
  

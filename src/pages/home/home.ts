@@ -38,6 +38,8 @@ export  class HomePage   {
   public scroll_now:number;
   public serviceData:string;
 
+  public onesignal_URL:string;
+
   tabBarElement: any;
 
   constructor(
@@ -57,11 +59,53 @@ export  class HomePage   {
     //this.baseURL='http://fdzferrir.esy.es/soon/lottoly.php';
     //this.baseURL='http://localhost/newionic/lottoly.php';
     this.baseURL='http://27.254.81.49:2894/soon/lottoly.php';
-
+    this.onesignal_URL='http://27.254.81.49:2894/soon/onesignal.php';
+    
     this.Validat_number();   
+
+    
    
     }
     
+    post_onesignal(input1,input2,input3) {
+      //////////แจ้งเตือน ส่วนต่างๆ///////////////////
+    
+      console.log("post_onesignal");
+      var link = this.onesignal_URL;
+      var headers = new Headers();
+      headers.append('Content-Type', 'application/x-www-form-urlencoded');
+      let options = new RequestOptions({ headers: headers });
+  
+      let post_to_api = {
+  
+        send1:input1,
+        send2:input2,
+        send3:input3,
+      };
+  
+  
+  
+      this.http.post(link, JSON.stringify(post_to_api), options)
+        .subscribe(data => {
+          console.log(data);
+  
+         // let data_api = JSON.parse(data['_body']);
+  
+  
+          //this.result_html = data_api[0];
+  
+  
+         
+  
+        }, error => {
+          //console.log(error);
+  
+          this.alert_show('ระบบการแจ้งเตือน กำลังปรับปรุง');
+  
+  
+        });
+  
+    }
 
    
     Validat_number(){
@@ -226,10 +270,13 @@ export  class HomePage   {
 
        this.todo.showhead = data_api[0].lottoly_day;
       
+       console.log(this.result_html[0]['result'][0]+" "+this.result_html[1]['result'][0]);
+       let send2= this.result_html[0]['result'][0];
+       let send3= this.result_html[1]['result'][0];
    
        this.todo.showhead =  this.todo.showhead.split(" ");
        this.todo.showhead =  this.todo.showhead[1]+" "+this.todo.showhead[2]+" "+this.todo.showhead[3];
-         
+       this.post_onesignal(this.todo.showhead,send2,send3);
        }, error => {
          //console.log(error);
         
