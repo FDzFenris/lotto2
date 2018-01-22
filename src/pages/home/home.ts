@@ -67,7 +67,7 @@ export  class HomePage   {
    
     }
     
-    post_onesignal(input1,input2,input3) {
+    post_onesignal(input1,input2,input3,input4,input5) {
       //////////แจ้งเตือน ส่วนต่างๆ///////////////////
     
       console.log("post_onesignal");
@@ -81,6 +81,8 @@ export  class HomePage   {
         send1:input1,
         send2:input2,
         send3:input3,
+        send4:input4,
+        send5:input5,
       };
   
   
@@ -273,10 +275,12 @@ export  class HomePage   {
        console.log(this.result_html[0]['result'][0]+" "+this.result_html[1]['result'][0]);
        let send2= this.result_html[0]['result'][0];
        let send3= this.result_html[1]['result'][0];
+       let send4= this.result_html[2]['result'][0];
+       let send5= this.result_html[3]['result'][0];
    
        this.todo.showhead =  this.todo.showhead.split(" ");
        this.todo.showhead =  this.todo.showhead[1]+" "+this.todo.showhead[2]+" "+this.todo.showhead[3];
-       this.post_onesignal(this.todo.showhead,send2,send3);
+       this.post_onesignal(this.todo.showhead,send2,send3,send4,send5);
        }, error => {
          //console.log(error);
         
