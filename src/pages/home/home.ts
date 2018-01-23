@@ -10,7 +10,7 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 
 //import { ContactPage } from '../../pages/contact/contact';
 
-
+import { OneSignal } from '@ionic-native/onesignal';
 
 @Component({
   
@@ -38,7 +38,7 @@ export  class HomePage   {
   public scroll_now:number;
   public serviceData:string;
 
-  public onesignal_URL:string;
+  //public onesignal_URL:string;
 
   tabBarElement: any;
 
@@ -50,7 +50,7 @@ export  class HomePage   {
     public formbuilder: FormBuilder,
     public platform: Platform,
     public loadingCtrl: LoadingController,
-
+    public oneSignal: OneSignal,
     public androidPermissions: AndroidPermissions,
     private barcodeScanner: BarcodeScanner,
    
@@ -59,15 +59,27 @@ export  class HomePage   {
     //this.baseURL='http://fdzferrir.esy.es/soon/lottoly.php';
     //this.baseURL='http://localhost/newionic/lottoly.php';
     this.baseURL='http://27.254.81.49:2894/soon/lottoly.php';
-    this.onesignal_URL='http://27.254.81.49:2894/soon/onesignal.php';
+    //this.onesignal_URL='http://27.254.81.49:2894/soon/onesignal.php';
     
     this.Validat_number();   
 
-    
-   
+    //this.post_onesignal();
+    this.initializeApp();
     }
     
-    post_onesignal(input1,input2,input3,input4,input5) {
+    initializeApp() {
+      this.platform.ready().then(() =>{
+  
+       
+        this.oneSignal.startInit('9b5c10b8-6128-407f-950a-49b646a25436', '54571618875');     
+        this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.Notification);
+    
+        this.oneSignal.endInit();
+    
+       });
+    }
+
+    /* post_onesignal() {
       //////////แจ้งเตือน ส่วนต่างๆ///////////////////
     
       console.log("post_onesignal");
@@ -78,11 +90,6 @@ export  class HomePage   {
   
       let post_to_api = {
   
-        send1:input1,
-        send2:input2,
-        send3:input3,
-        send4:input4,
-        send5:input5,
       };
   
   
@@ -107,7 +114,7 @@ export  class HomePage   {
   
         });
   
-    }
+    } */
 
    
     Validat_number(){
@@ -273,14 +280,11 @@ export  class HomePage   {
        this.todo.showhead = data_api[0].lottoly_day;
       
        console.log(this.result_html[0]['result'][0]+" "+this.result_html[1]['result'][0]);
-       let send2= this.result_html[0]['result'][0];
-       let send3= this.result_html[1]['result'][0];
-       let send4= this.result_html[2]['result'][0];
-       let send5= this.result_html[3]['result'][0];
+      
    
        this.todo.showhead =  this.todo.showhead.split(" ");
        this.todo.showhead =  this.todo.showhead[1]+" "+this.todo.showhead[2]+" "+this.todo.showhead[3];
-       this.post_onesignal(this.todo.showhead,send2,send3,send4,send5);
+       
        }, error => {
          //console.log(error);
         

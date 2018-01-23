@@ -6,7 +6,7 @@ import { ToastController } from 'ionic-angular/components/toast/toast-controller
 import { LocalNotifications } from '@ionic-native/local-notifications';
 
 
-import { OneSignal } from '@ionic-native/onesignal';
+
 
 
 @Component({
@@ -31,7 +31,7 @@ export  class AboutPage {
     public navCtrl: NavController,
     public http:Http,
     public localNotifications: LocalNotifications,
-    public oneSignal: OneSignal,
+    
     public platform: Platform,
     public toastCtrl:ToastController ) {
 
@@ -41,7 +41,7 @@ export  class AboutPage {
 
 
 
-      this.initializeApp();
+     
   
      
      
@@ -49,17 +49,7 @@ export  class AboutPage {
 
 
 
-  initializeApp() {
-    this.platform.ready().then(() =>{
 
-     
-      this.oneSignal.startInit('9b5c10b8-6128-407f-950a-49b646a25436', '54571618875');     
-      this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.Notification);
-  
-      this.oneSignal.endInit();
-  
-     });
-  }
    
 
  
