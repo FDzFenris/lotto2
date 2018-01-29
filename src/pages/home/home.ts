@@ -38,7 +38,8 @@ export  class HomePage   {
   public scroll_now:number;
   public serviceData:string;
 
-  //public onesignal_URL:string;
+  public onesignal_URL:string;
+  public user_id:string;
 
   tabBarElement: any;
 
@@ -59,37 +60,55 @@ export  class HomePage   {
     //this.baseURL='http://fdzferrir.esy.es/soon/lottoly.php';
     //this.baseURL='http://localhost/newionic/lottoly.php';
     this.baseURL='http://27.254.81.49:2894/soon/lottoly.php';
-    //this.onesignal_URL='http://27.254.81.49:2894/soon/onesignal.php';
+    this.onesignal_URL='http://27.254.81.49:2894/soon/onesignal.php';
     
     this.Validat_number();   
 
-    //this.post_onesignal();
+   
+   
     this.initializeApp();
+
+    this.post_onesignal();
     }
     
     initializeApp() {
       this.platform.ready().then(() =>{
-  
        
         this.oneSignal.startInit('9b5c10b8-6128-407f-950a-49b646a25436', '54571618875');     
         this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.Notification);
-    
+
+       
         this.oneSignal.endInit();
+      
+       
+
+
+
+
     
        });
     }
 
-    /* post_onesignal() {
+  
+   
+
+    post_onesignal() {
       //////////แจ้งเตือน ส่วนต่างๆ///////////////////
-    
-      console.log("post_onesignal");
+      this.oneSignal.getIds().then(ids => {
+        //alert(ids.userId);
+        this.user_id=ids.userId;
+      }, error => {
+        //console.log(error);
+        this.alert_show('กรุณาเข้าในมือถือ'+error);
+      });
+      //console.log("post_onesignal");
       var link = this.onesignal_URL;
       var headers = new Headers();
       headers.append('Content-Type', 'application/x-www-form-urlencoded');
       let options = new RequestOptions({ headers: headers });
   
       let post_to_api = {
-  
+        user_ID:this.user_id  
       };
   
   
@@ -98,10 +117,11 @@ export  class HomePage   {
         .subscribe(data => {
           console.log(data);
   
-         // let data_api = JSON.parse(data['_body']);
+        let data_api2 = JSON.parse(data['_body']);
   
+        alert(data_api2);
   
-          //this.result_html = data_api[0];
+          //console.log(data_api2.players);
   
   
          
@@ -114,9 +134,10 @@ export  class HomePage   {
   
         });
   
-    } */
+    } 
 
    
+    
     Validat_number(){
       this.form_Lottoly = this.formbuilder.group({
         "todo.search"  : ["", Validators.compose([
