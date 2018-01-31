@@ -40,6 +40,7 @@ export  class HomePage   {
 
   public onesignal_URL:string;
   public onesignal_URL2:string;
+  public onesignal_URL3:string;
 
   public user_id:string;
 
@@ -64,10 +65,11 @@ export  class HomePage   {
     this.baseURL='http://27.254.81.49:2894/soon/lottoly.php';
     this.onesignal_URL='http://27.254.81.49:2894/soon/onesignal.php';
     this.onesignal_URL2='http://27.254.81.49:2894/soon/onesignal2.php';
+    this.onesignal_URL3='http://27.254.81.49:2894/soon/onesignal3.php';
     
     this.Validat_number();   
 
-    this.post_onesignal2();
+    this.post_onesignal_allnotifications();
    
    
     this.initializeApp();
@@ -85,13 +87,8 @@ export  class HomePage   {
     }
 
   
-    post_onesignal2() {
-      //////////แจ้งเตือน ส่วนต่างๆ///////////////////
-      this.oneSignal.getIds().then(ids => {
-        //alert(ids.userId);
-        this.user_id=ids.userId;
+    post_onesignal_allnotifications() {
      
-      //console.log("post_onesignal");
       var link = this.onesignal_URL2;
       var headers = new Headers();
       headers.append('Content-Type', 'application/x-www-form-urlencoded');
@@ -110,10 +107,17 @@ export  class HomePage   {
       
        let data_api2 = JSON.parse(data['_body']);
   
-        alert(data_api2.total_count);
+      
+       for(let i=0;  i<data_api2.notifications.length; i++){
+
+        console.log("include_player_ids: " +data_api2.notifications[i].include_player_ids);
+        console.log("id: " +data_api2.notifications[i].id);
+        this.cancal_notifications(data_api2.notifications[i].id);
+       
+       }
+          
   
-          //console.log(data_api2);
-  
+
   
          
   
@@ -127,10 +131,43 @@ export  class HomePage   {
 
 
 
-      }, error => {
-        //console.log(error);
-        this.alert_show('กรุณาเข้าในมือถือ'+error);
-      }); 
+      
+    } 
+
+    cancal_notifications(nofi_id) {
+     
+      var link = this.onesignal_URL3;
+      var headers = new Headers();
+      headers.append('Content-Type', 'application/x-www-form-urlencoded');
+      let options = new RequestOptions({ headers: headers });
+      //alert('in_post : '+this.user_id);
+      let post_to_api = {
+        nofi_ID:nofi_id
+           
+      };
+  
+  
+  
+      this.http.post(link, JSON.stringify(post_to_api), options)
+        .subscribe(data => {
+          //console.log(data);
+      
+       let data_cancal = JSON.parse(data['_body']);
+       console.log(data_cancal);
+      
+         
+  
+        }, error => {
+          //console.log(error);
+  
+          this.alert_show('CANCAL กำลังปรับปรุง');
+  
+  
+        });
+
+
+
+      
     } 
    
 
