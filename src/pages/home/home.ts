@@ -60,12 +60,13 @@ export  class HomePage   {
    
     public http:Http) 
     {
-    //this.baseURL='http://fdzferrir.esy.es/soon/lottoly.php';
-    //this.baseURL='http://localhost/newionic/lottoly.php';
-    this.baseURL='http://27.254.81.49:2894/soon/lottoly.php';
-    this.onesignal_URL='http://27.254.81.49:2894/soon/onesignal.php';
-    this.onesignal_URL2='http://27.254.81.49:2894/soon/onesignal2.php';
-    this.onesignal_URL3='http://27.254.81.49:2894/soon/onesignal3.php';
+
+    this.baseURL='http://fdzferrir.esy.es/soon/lottoly.php';
+   
+    //this.baseURL='http://27.254.81.49:2894/soon/lottoly.php';
+    this.onesignal_URL='http://fdzferrir.esy.es/soon/onesignal.php';
+    this.onesignal_URL2='http://fdzferrir.esy.es/soon/onesignal2.php';
+    this.onesignal_URL3='http://fdzferrir.esy.es/soon/onesignal3.php';
     
     this.Validat_number();   
 
@@ -387,6 +388,7 @@ export  class HomePage   {
   
 
        this.todo.showhead = data_api[0].lottoly_day;
+       
       
        console.log(this.result_html[0]['result'][0]+" "+this.result_html[1]['result'][0]);
       
@@ -395,8 +397,8 @@ export  class HomePage   {
 
 
    
-       this.todo.showhead =  this.todo.showhead.split(" ");
-       this.todo.showhead =  this.todo.showhead[1]+" "+this.todo.showhead[2]+" "+this.todo.showhead[3];
+       //this.todo.showhead =  this.todo.showhead.split(" ");
+       //this.todo.showhead =  this.todo.showhead[1]+" "+this.todo.showhead[2]+" "+this.todo.showhead[3];
 
 
 

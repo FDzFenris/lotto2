@@ -35,7 +35,7 @@ export  class AboutPage {
     public platform: Platform,
     public toastCtrl:ToastController ) {
 
-      this.baseURL='http://27.254.81.49:2894/soon/lottoly_20year.php';
+      this.baseURL='http://fdzferrir.esy.es/soon/lottoly_20year.php';
      
       //this.baseURL='http://localhost/newionic/lottoly_20year.php';
 
