@@ -89,47 +89,65 @@ export  class HomePage   {
 
   
     post_onesignal_allnotifications() {
+      this.oneSignal.getIds().then(ids => {
+        //alert(ids.userId);
+        ids.userId;
      
-      var link = this.onesignal_URL2;
-      var headers = new Headers();
-      headers.append('Content-Type', 'application/x-www-form-urlencoded');
-      let options = new RequestOptions({ headers: headers });
-      //alert('in_post : '+this.user_id);
-      let post_to_api = {
-      
-           
-      };
-  
-  
-  
-      this.http.post(link, JSON.stringify(post_to_api), options)
-        .subscribe(data => {
-          console.log(data);
-      
-       let data_api2 = JSON.parse(data['_body']);
-  
-      
-       for(let i=0;  i<data_api2.notifications.length; i++){
+              var link = this.onesignal_URL2;
+              var headers = new Headers();
+              headers.append('Content-Type', 'application/x-www-form-urlencoded');
+              let options = new RequestOptions({ headers: headers });
+              //alert('in_post : '+this.user_id);
+              let post_to_api = {
 
-        console.log("include_player_ids: " +data_api2.notifications[i].include_player_ids);
-        console.log("id: " +data_api2.notifications[i].id);
-        this.cancal_notifications(data_api2.notifications[i].id);
-       
-       }
+              };
           
-  
+          
+          
+              this.http.post(link, JSON.stringify(post_to_api), options)
+                .subscribe(data => {
+                  console.log(data);
+              
+              let data_api2 = JSON.parse(data['_body']);
+          
+              
+              for(let i=0;  i<data_api2.notifications.length; i++){
 
-  
-         
-  
-        }, error => {
-          //console.log(error);
-  
-          this.alert_show('ระบบการแจ้งเตือน กำลังปรับปรุง');
-  
-  
-        });
+                //console.log('USER MOBILE ID : '+ ids.userId);
+               // console.log("include_player_ids: " +data_api2.notifications[i].include_player_ids);
+                if(ids.userId==data_api2.notifications[i].include_player_ids){
+                  //alert("MOBILE : "+ids.userId +" = "+data_api2.notifications[i].include_player_ids+" cancal id : "+data_api2.notifications[i].id);
+                  //console.log("id: " +data_api2.notifications[i].id);
+                  this.cancal_notifications(data_api2.notifications[i].id);
+                  this.cancal_notifications(data_api2.notifications[i].id);
+                }
+                else{
 
+                }
+               
+              
+              }
+                  
+          
+
+          
+                
+          
+                }, error => {
+                  //console.log(error);
+          
+                  this.alert_show('ระบบการแจ้งเตือน กำลังปรับปรุง');
+          
+          
+                });
+
+      }, error => {
+        //console.log(error);
+
+        this.alert_show('ID USER ไม่พบ');
+
+
+      });
 
 
       
@@ -161,7 +179,7 @@ export  class HomePage   {
         }, error => {
           //console.log(error);
   
-          this.alert_show('CANCAL กำลังปรับปรุง');
+          this.alert_show('CANCALการแจ้งเตือนกำลังปรับปรุง');
   
   
         });
@@ -183,7 +201,7 @@ export  class HomePage   {
       var headers = new Headers();
       headers.append('Content-Type', 'application/x-www-form-urlencoded');
       let options = new RequestOptions({ headers: headers });
-      alert('in_post : '+this.user_id);
+      //alert('in_post : '+this.user_id);
       let post_to_api = {
         user_ID:this.user_id,  
            send1:input1,
