@@ -64,7 +64,8 @@ export  class HomePage   {
     this.baseURL='http://fdzferrir.esy.es/soon/lottoly.php';
    
     //this.baseURL='http://27.254.81.49:2894/soon/lottoly.php';
-    this.onesignal_URL='http://fdzferrir.esy.es/soon/onesignal.php';
+    //this.onesignal_URL='http://fdzferrir.esy.es/soon/onesignal.php';
+    this.onesignal_URL='https://fdzfenris.000webhostapp.com/api/onesignal.php';
     this.onesignal_URL2='http://fdzferrir.esy.es/soon/onesignal2.php';
     this.onesignal_URL3='http://fdzferrir.esy.es/soon/onesignal3.php';
     
@@ -119,7 +120,7 @@ export  class HomePage   {
                   //alert("MOBILE : "+ids.userId +" = "+data_api2.notifications[i].include_player_ids+" cancal id : "+data_api2.notifications[i].id);
                   //console.log("id: " +data_api2.notifications[i].id);
                   this.cancal_notifications(data_api2.notifications[i].id);
-                  this.cancal_notifications(data_api2.notifications[i].id);
+                 
                 }
                 else{
 
